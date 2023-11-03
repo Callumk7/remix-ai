@@ -1,9 +1,96 @@
 {
   "version": "5",
   "dialect": "sqlite",
-  "id": "906bf1b2-387d-429f-99ec-2f7f8ff2f2bf",
+  "id": "99541516-8632-450f-b087-f5629ba16070",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
+    "node_links": {
+      "name": "node_links",
+      "columns": {
+        "from_id": {
+          "name": "from_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "to_id": {
+          "name": "to_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "node_links_from_id_nodes_id_fk": {
+          "name": "node_links_from_id_nodes_id_fk",
+          "tableFrom": "node_links",
+          "tableTo": "nodes",
+          "columnsFrom": [
+            "from_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "node_links_to_id_nodes_id_fk": {
+          "name": "node_links_to_id_nodes_id_fk",
+          "tableFrom": "node_links",
+          "tableTo": "nodes",
+          "columnsFrom": [
+            "to_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "node_links_from_id_to_id_pk": {
+          "columns": [
+            "from_id",
+            "to_id"
+          ]
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "nodes": {
+      "name": "nodes",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "body": {
+          "name": "body",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "type": {
+          "name": "type",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
     "users": {
       "name": "users",
       "columns": {
